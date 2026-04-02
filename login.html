@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Login | System Product</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg: #0a0e1a;
+            --surface: #111827;
+            --border: #1e2d40;
+            --accent: #00d4ff;
+            --accent2: #7c3aed;
+            --text: #e8eaf6;
+            --muted: #6b7a99;
+            --error: #ff4d6d;
+            --success: #00e5a0;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            align-items: stretch;
+            overflow: hidden;
+        }
+
+        /* LEFT PANEL */
+        .left-panel {
+            flex: 1;
+            background: linear-gradient(135deg, #0d1b2a 0%, #1a0533 50%, #0a1628 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .left-panel::before {
+            content: '';
+            position: absolute;
+            width: 500px; height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0,212,255,0.12) 0%, transparent 70%);
+            top: -100px; left: -100px;
+        }
+
+        .left-panel::after {
+            content: '';
+            position: absolute;
+            width: 400px; height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(124,58,237,0.15) 0%, transparent 70%);
+            bottom: -80px; right: -80px;
+        }
+
+        .grid-lines {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(0,212,255,0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,212,255,0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .brand {
+            position: relative;
+            z-index: 1;
+        }
+
+        .brand-logo {
+            font-family: 'Syne', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        .brand-tagline {
+            font-size: 0.875rem;
+            color: var(--muted);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .left-headline {
+            position: relative;
+            z-index: 1;
+            margin-top: 80px;
+        }
+
+        .left-headline h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.1;
+            color: var(--text);
+        }
+
+        .left-headline h1 span {
+            color: var(--accent);
+        }
+
+        .left-headline p {
+            margin-top: 20px;
+            color: var(--muted);
+            font-size: 1rem;
+            line-height: 1.7;
+            max-width: 380px;
+        }
+
+        .stats-row {
+            position: relative;
+            z-index: 1;
+            margin-top: 60px;
+            display: flex;
+            gap: 40px;
+        }
+
+        .stat { }
+        .stat-value {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* RIGHT PANEL */
+        .login-area {
+            width: 480px;
+            min-height: 100vh;
+            background: var(--surface);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 60px 48px;
+            border-left: 1px solid var(--border);
+            position: relative;
+        }
+
+        .login-area::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+        }
+
+        .login-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .login-sub {
+            color: var(--muted);
+            font-size: 0.9rem;
+            margin-bottom: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="password"] {
+            width: 100%;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 14px 16px;
+            border-radius: 8px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            outline: none;
+        }
+
+        .form-group input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(0,212,255,0.1);
+        }
+
+        .form-group input.error-field {
+            border-color: var(--error);
+        }
+
+        .field-error {
+            color: var(--error);
+            font-size: 0.78rem;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .field-error.show { display: block; }
+
+        .remember-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 28px;
+        }
+
+        .remember-row input[type="checkbox"] {
+            width: 16px; height: 16px;
+            accent-color: var(--accent);
+            cursor: pointer;
+        }
+
+        .remember-row label {
+            font-size: 0.875rem;
+            color: var(--muted);
+            cursor: pointer;
+        }
+
+        .btn-login {
+            width: 100%;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            color: #fff;
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Syne', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            letter-spacing: 0.5px;
+            transition: opacity 0.2s, transform 0.1s;
+        }
+
+        .btn-login:hover { opacity: 0.9; }
+        .btn-login:active { transform: scale(0.99); }
+
+        .alert-msg {
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            margin-bottom: 20px;
+            display: none;
+        }
+        .alert-msg.error { background: rgba(255,77,109,0.12); border: 1px solid rgba(255,77,109,0.3); color: var(--error); display: block; }
+        .alert-msg.success { background: rgba(0,229,160,0.12); border: 1px solid rgba(0,229,160,0.3); color: var(--success); display: block; }
+
+        @media (max-width: 900px) {
+            .left-panel { display: none; }
+            .login-area { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="left-panel">
+    <div class="grid-lines"></div>
+    <div class="brand">
+        <div class="brand-logo">⬡ System Product</div>
+        <div class="brand-tagline">Gestão inteligente de produtos</div>
+    </div>
+    <div class="left-headline">
+        <h1>Controle total<br>do seu <span>estoque</span></h1>
+        <p>Cadastre, edite e monitore seus produtos em tempo real com uma interface moderna e eficiente.</p>
+    </div>
+    <div class="stats-row">
+        <div class="stat">
+            <div class="stat-value">99%</div>
+            <div class="stat-label">Uptime</div>
+        </div>
+        <div class="stat">
+            <div class="stat-value">∞</div>
+            <div class="stat-label">Produtos</div>
+        </div>
+        <div class="stat">
+            <div class="stat-value">0ms</div>
+            <div class="stat-label">Latência</div>
+        </div>
+    </div>
+</div>
+
+<main class="login-area">
+    <div class="login-title">Bem-vindo de volta</div>
+    <div class="login-sub">Faça login para acessar o painel</div>
+
+    <div class="alert-msg" id="alertMsg"></div>
+
+    <div class="form-group">
+        <label>Usuário</label>
+        <input type="text" id="inputUsuario" placeholder="Seu nome de usuário">
+        <div class="field-error" id="erroUsuario">Por favor, informe seu usuário.</div>
+    </div>
+
+    <div class="form-group">
+        <label>Senha</label>
+        <input type="password" id="inputSenha" placeholder="Sua senha">
+        <div class="field-error" id="erroSenha">Por favor, informe sua senha.</div>
+    </div>
+
+    <div class="remember-row">
+        <input type="checkbox" id="lembrarSenha">
+        <label for="lembrarSenha">Lembrar senha</label>
+    </div>
+
+    <button class="btn-login" id="btnLogin">Entrar no Sistema</button>
+</main>
+
+<script>
+(function () {
+    const inputUsuario = document.getElementById('inputUsuario');
+    const inputSenha   = document.getElementById('inputSenha');
+    const chkLembrar   = document.getElementById('lembrarSenha');
+    const btnLogin     = document.getElementById('btnLogin');
+    const alertMsg     = document.getElementById('alertMsg');
+
+    // Carregar "lembrar senha" e preencher campos se ativo
+    const lembrado = localStorage.getItem('lembrarSenha');
+    if (lembrado === 'true') {
+        chkLembrar.checked = true;
+        const senhaGuardada = localStorage.getItem('senhaGuardada');
+        const usuarioGuardado = localStorage.getItem('usuarioGuardado');
+        if (senhaGuardada) inputSenha.value = senhaGuardada;
+        if (usuarioGuardado) inputUsuario.value = usuarioGuardado;
+    }
+
+    function showError(inputEl, errEl, msg) {
+        inputEl.classList.add('error-field');
+        errEl.textContent = msg;
+        errEl.classList.add('show');
+    }
+
+    function clearError(inputEl, errEl) {
+        inputEl.classList.remove('error-field');
+        errEl.classList.remove('show');
+    }
+
+    inputUsuario.addEventListener('input', () => clearError(inputUsuario, document.getElementById('erroUsuario')));
+    inputSenha.addEventListener('input',   () => clearError(inputSenha,   document.getElementById('erroSenha')));
+
+    btnLogin.addEventListener('click', function () {
+        let valido = true;
+        alertMsg.className = 'alert-msg';
+        alertMsg.textContent = '';
+
+        if (!inputUsuario.value.trim()) {
+            showError(inputUsuario, document.getElementById('erroUsuario'), 'Por favor, informe seu usuário.');
+            valido = false;
+        }
+        if (!inputSenha.value.trim()) {
+            showError(inputSenha, document.getElementById('erroSenha'), 'Por favor, informe sua senha.');
+            valido = false;
+        }
+
+        if (!valido) return;
+
+        // Salvar lembrar senha
+        if (chkLembrar.checked) {
+            localStorage.setItem('lembrarSenha', 'true');
+            localStorage.setItem('senhaGuardada', inputSenha.value);
+            localStorage.setItem('usuarioGuardado', inputUsuario.value.trim());
+        } else {
+            localStorage.removeItem('lembrarSenha');
+            localStorage.removeItem('senhaGuardada');
+            localStorage.removeItem('usuarioGuardado');
+        }
+
+        // Salvar usuário na sessionStorage
+        sessionStorage.setItem('usuarioLogado', inputUsuario.value.trim());
+
+        // Redirecionar
+        alertMsg.textContent = 'Login realizado com sucesso! Redirecionando...';
+        alertMsg.classList.add('success');
+
+        setTimeout(() => {
+            window.location.href = 'index.html';
+        }, 1000);
+    });
+})();
+</script>
+
+</body>
+</html>
