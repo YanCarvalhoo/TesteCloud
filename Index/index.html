@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <title>Login | System Product</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Produtos | System Product</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="login.css">
-    <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+     <link rel="stylesheet" href="style.css">
+     <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
@@ -24,20 +25,31 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
-
 </head>
 <body>
 
-<div class="left-panel">
-    <div class="brand">
-        <div class="brand-logo">System Product</div>
-        <div class="brand-tagline">Gestão inteligente de produtos</div>
+<header id="header"></header>
+
+<main id="main"></main>
+
+<footer id="footer"></footer>
+
+<!-- Toast container -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- Modal confirmação exclusão -->
+<div class="modal-overlay" id="modalOverlay" style="display:none;">
+    <div class="modal-box">
+        <h3>Confirmar Exclusão</h3>
+        <p>Tem certeza que deseja excluir o produto <strong id="modalProdutoNome"></strong>? Esta ação não pode ser desfeita.</p>
+        <div class="modal-btns">
+            <button class="btn-cancel-del" id="btnCancelDel">Cancelar</button>
+            <button class="btn-confirm-del" id="btnConfirmDel">Excluir</button>
+        </div>
     </div>
 </div>
 
-<main class="login-area" id="main"></main>
-
-<script src="login.js"></script>
+<script src="main.js"></script>
 
 </body>
 </html>

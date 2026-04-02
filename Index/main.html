@@ -1,0 +1,101 @@
+ <!-- HOME -->
+    <div class="screen active" id="screen-home">
+        <div class="home-hero">
+            <h1>Painel de <span>Controle</span></h1>
+            <p>Gerencie seus produtos, estoque e muito mais.</p>
+        </div>
+        <div class="home-cards">
+            <div class="home-card" data-goto="produtos">
+                <div class="home-card-icon">📦</div>
+                <h3>Ver Produtos</h3>
+                <p>Consulte todos os produtos cadastrados e seus estoques.</p>
+            </div>
+            <div class="home-card" data-goto="cadastrar">
+                <div class="home-card-icon">➕</div>
+                <h3>Novo Produto</h3>
+                <p>Adicione um novo produto ao sistema rapidamente.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- PRODUTOS -->
+    <div class="screen" id="screen-produtos">
+        <div class="page-header">
+            <div class="page-title">
+                Produtos
+                <span>Lista de todos os produtos cadastrados</span>
+            </div>
+            <button class="btn-primary" id="btnNovoProduto">+ Novo Produto</button>
+        </div>
+
+        <div class="card-criar" id="cardCriar" style="display:none;">
+            <div class="card-criar-header" id="formTitulo">Novo Produto</div>
+            <div class="card-criar-body">
+                <input type="hidden" id="editandoId">
+                <div class="input-group">
+                    <label>Nome do Produto *</label>
+                    <input type="text" id="inputNome" placeholder="Ex: Camiseta Azul">
+                    <div class="field-error" id="erroNome">Informe o nome do produto.</div>
+                </div>
+                <div class="input-group">
+                    <label>Preço (R$) *</label>
+                    <input type="number" id="inputPreco" placeholder="0,00" min="0" step="0.01">
+                    <div class="field-error" id="erroPreco">Informe um preço válido.</div>
+                </div>
+                <div class="input-group">
+                    <label>Estoque *</label>
+                    <input type="number" id="inputEstoque" placeholder="0" min="0">
+                    <div class="field-error" id="erroEstoque">Informe a quantidade em estoque.</div>
+                </div>
+                <button class="btn-salvar" id="btnSalvar">Salvar</button>
+                <button class="btn-cancelar" id="btnCancelar">Limpar</button>
+            </div>
+        </div>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Produto</th>
+                        <th>Preço</th>
+                        <th>Estoque</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="tabelaProdutos"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- CADASTRAR (atalho direto) -->
+    <div class="screen" id="screen-cadastrar">
+        <div class="page-header">
+            <div class="page-title">
+                Cadastrar Produto
+                <span>Preencha os campos abaixo</span>
+            </div>
+        </div>
+        <div class="card-criar">
+            <div class="card-criar-header">Formulário de Cadastro</div>
+            <div class="card-criar-body">
+                <div class="input-group">
+                    <label>Nome do Produto *</label>
+                    <input type="text" id="inputNome2" placeholder="Ex: Camiseta Azul">
+                    <div class="field-error" id="erroNome2">Informe o nome do produto.</div>
+                </div>
+                <div class="input-group">
+                    <label>Preço (R$) *</label>
+                    <input type="number" id="inputPreco2" placeholder="0,00" min="0" step="0.01">
+                    <div class="field-error" id="erroPreco2">Informe um preço válido.</div>
+                </div>
+                <div class="input-group">
+                    <label>Estoque *</label>
+                    <input type="number" id="inputEstoque2" placeholder="0" min="0">
+                    <div class="field-error" id="erroEstoque2">Informe a quantidade em estoque.</div>
+                </div>
+                <button class="btn-salvar" id="btnSalvar2">Salvar</button>
+                <button class="btn-cancelar" id="btnCancelar2">Limpar</button>
+            </div>
+        </div>
+    </div>
