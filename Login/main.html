@@ -1,23 +1,84 @@
- <div class="login-title">Bem-vindo de volta</div>
-    <div class="login-sub">Faça login para acessar o painel</div>
+<!-- =============================== -->
+<!-- TÍTULO DO LOGIN -->
+<!-- =============================== -->
+<div class="login-title">Bem-vindo de volta</div>
 
-    <div class="alert-msg" id="alertMsg"></div>
+<!-- SUBTÍTULO -->
+<div class="login-sub">Faça login para acessar o painel</div>
 
-    <div class="form-group">
-        <label>Usuário</label>
-        <input type="text" id="inputUsuario" placeholder="Seu nome de usuário">
-        <div class="field-error" id="erroUsuario">Por favor, informe seu usuário.</div>
+
+<!-- =============================== -->
+<!-- MENSAGEM DE ALERTA (SUCESSO/ERRO) -->
+<!-- Controlada via JavaScript -->
+<!-- =============================== -->
+<div class="alert-msg" id="alertMsg"></div>
+
+
+<!-- =============================== -->
+<!-- CAMPO: USUÁRIO -->
+<!-- =============================== -->
+<div class="form-group">
+
+    <!-- LABEL -->
+    <label>Usuário</label>
+
+    <!-- INPUT -->
+    <input 
+        type="text" 
+        id="inputUsuario" 
+        placeholder="Seu nome de usuário"
+    >
+
+    <!-- MENSAGEM DE ERRO -->
+    <!-- Aparece quando o campo está vazio -->
+    <div class="field-error" id="erroUsuario">
+        Por favor, informe seu usuário.
     </div>
 
-    <div class="form-group">
-        <label>Senha</label>
-        <input type="password" id="inputSenha" placeholder="Sua senha">
-        <div class="field-error" id="erroSenha">Por favor, informe sua senha.</div>
+</div>
+
+
+<!-- =============================== -->
+<!-- CAMPO: SENHA -->
+<!-- =============================== -->
+<div class="form-group">
+
+    <!-- LABEL -->
+    <label>Senha</label>
+
+    <!-- INPUT -->
+    <input 
+        type="password" 
+        id="inputSenha" 
+        placeholder="Sua senha"
+    >
+
+    <!-- MENSAGEM DE ERRO -->
+    <div class="field-error" id="erroSenha">
+        Por favor, informe sua senha.
     </div>
 
-    <div class="remember-row">
-        <input type="checkbox" id="lembrarSenha">
-        <label for="lembrarSenha">Lembrar senha</label>
-    </div>
+</div>
 
-    <button class="btn-login" id="btnLogin">Entrar no Sistema</button>
+
+<!-- =============================== -->
+<!-- CHECKBOX: LEMBRAR SENHA -->
+<!-- =============================== -->
+<div class="remember-row">
+
+    <!-- CHECKBOX -->
+    <input type="checkbox" id="lembrarSenha">
+
+    <!-- TEXTO -->
+    <label for="lembrarSenha">Lembrar senha</label>
+
+</div>
+
+
+<!-- =============================== -->
+<!-- BOTÃO DE LOGIN -->
+<!-- Dispara evento no login.js -->
+<!-- =============================== -->
+<button class="btn-login" id="btnLogin">
+    Entrar no Sistema
+</button>
