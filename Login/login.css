@@ -25,8 +25,14 @@
 
        /* LEFT PANEL */
 .left-panel {
-    flex: 1;
-    background: linear-gradient(135deg, var(--bg) 0%, #172554 50%, var(--surface) 100%);
+        flex: 1;
+    background: 
+        linear-gradient(rgba(10,14,26,0.85), rgba(10,14,26,0.85)),
+        url("compagnons-Fa9b57hffnM-unsplash (1).jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
